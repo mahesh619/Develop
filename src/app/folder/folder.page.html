@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-data">
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ 'DASHBOARD.SELECT_LANGUAGE' | translate }}</ion-label>
+      <ion-select
+        placeholder="Select One"
+        [(ngModel)]="selectedLanguage"
+        (ionChange)="languageChanged()"
+      >
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="fr">French</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <br />
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+      <ion-label position="floating"
+        >{{ 'DASHBOARD.MOBILE' | translate }}</ion-label
+      >
+      <ion-input formControlName="mobile" type="text" required></ion-input>
+    </ion-item>
+    <div *ngIf="submitted && f.mobile.errors" class="invalid-field">
+      <div *ngIf="submitted && f.mobile.errors.required">
+        {{ 'DASHBOARD.REQUIRED_MOBILE' | translate }}
+      </div>
+    </div>
+    <ion-item lines="full">
+      <ion-label position="floating"
+        >{{ 'DASHBOARD.NAME' | translate }}</ion-label
+      >
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <div *ngIf="submitted && f.name.errors" class="invalid-field">
+      <div *ngIf="submitted && f.name.errors.required">
+        {{ 'DASHBOARD.REQUIRED_NAME' | translate }}
+      </div>
+    </div>
+    <ion-item lines="full">
+      <ion-label position="floating"
+        >{{ 'DASHBOARD.DOB' | translate }}</ion-label
+      >
+      <ion-datetime
+        (ionChange)="getDate($event)"
+        formControlName="dob"
+        [value]="defaultDate"
+      ></ion-datetime>
+    </ion-item>
+    <div *ngIf="submitted && f.dob.errors" class="invalid-field">
+      <div *ngIf="submitted && f.dob.errors.required">
+        Date of birth required
+      </div>
+    </div>
+    <br />
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+          >{{ 'DASHBOARD.SUBMIT' | translate }}</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

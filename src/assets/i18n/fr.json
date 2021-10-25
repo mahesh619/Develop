@@ -1,0 +1,13 @@
+{
+  "DASHBOARD": {
+    "MOBILE": "Mobile",
+    "NAME": "Nom",
+    "DOB": "Date de naissance",
+    "SELECT_LANGUAGE": "Choisir la langue",
+    "SUBMIT": "Soumettre",
+    "HOME": "Accueil",
+    "valuelab": "ValueLab",
+    "REQUIRED_NAME": "Le nom est requis.",
+    "REQUIRED_MOBILE": "Mobile Non est requis."
+  }
+}
